@@ -35,10 +35,10 @@ def grab_tweets(username, max_results):
     Grab the url of tweets for the given username
     """
     tweets = []
-    logger.debug('scraping twitter for {} and grabbing {} tweets'.format(username, max_results))
+    logger.debug('scraping twitter for {} tweets'.format(username))
     for i, tweet in enumerate(sns_twitter.TwitterUserScraper(username).get_items()):
         if i+1 > max_results:
-            logger.debug('reached the max result of scraped tweets')
+            logger.debug('reached the max result of scraped tweets {}'.format(i))
             break
         tweets.append(list(['','',tweet.url]))
     return tweets
